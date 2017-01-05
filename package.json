@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Todolab frontend",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node --harmony-async-await index.js"
+  },
   "repository": "Todolab/frontent",
   "keywords": [
     "todo"
@@ -14,6 +16,7 @@
     "koa-react-view": "^3.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.21.0",
     "babel-preset-env": "^1.1.5"
   }
 }
