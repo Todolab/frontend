@@ -1,0 +1,19 @@
+{
+  "name": "Todolab-frontend",
+  "version": "0.0.1",
+  "description": "Todolab frontend",
+  "main": "index.js",
+  "scripts": {},
+  "repository": "Todolab/frontent",
+  "keywords": [
+    "todo"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "koa": "2",
+    "koa-react-view": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.1.5"
+  }
+}
