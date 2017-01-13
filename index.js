@@ -2,12 +2,18 @@
  * Created by stevenjlho on 05/01/2017.
  */
 
-require("babel-core").transform("code", {
+
+require("babel-register")({
   "presets": [
     ["env", {
       "targets": {
         "node": "current"
       }
+    }]
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"]
     }]
   ]
 });

@@ -13,11 +13,14 @@
   "license": "MIT",
   "dependencies": {
     "koa": "2",
-    "koa-react-view": "^3.0.0"
+    "koa-react-view": "^3.0.0",
+    "koa-router": "^7.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.21.0",
+    "babel-cli": "^6.18.0",
+    "babel-plugin-module-resolver": "^2.4.0",
     "babel-preset-env": "^1.1.5",
+    "babel-register": "^6.18.0",
     "nodemon": "^1.11.0"
   }
 }
