@@ -7,13 +7,6 @@ const app = new Koa();
 
 import router from 'router.js'
 
-// response
-// app.use(ctx => {
-//   ctx.body = 'Hello Koa';
-// });
-
-
-
 app
     .use(router.routes())
     .use(router.allowedMethods());
