@@ -9,7 +9,8 @@ require("babel-register")({
       "targets": {
         "node": "current"
       }
-    }]
+    }],
+    "react"
   ],
   "plugins": [
     ["module-resolver", {
