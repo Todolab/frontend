@@ -21,10 +21,16 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.10",
     "babel-plugin-module-resolver": "^2.4.0",
     "babel-preset-env": "^1.1.5",
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
-    "nodemon": "^1.11.0"
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.5",
+    "koa-webpack": "^0.2.0",
+    "nodemon": "^1.11.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.0"
   }
 }

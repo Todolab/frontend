@@ -1,8 +1,9 @@
-var Content = require('../public/js/components/content');
-var escapeHtml = require('escape-html');
-var Layout = require('./layout');
-var React = require('react');
-var ReactDOMServer = require('react-dom/server');
+import escapeHtml from 'escape-html'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
+import Content from 'resource/components/content'
+import Layout from 'resource/views/layout'
 
 var index = React.createClass({
   propTypes: {
@@ -27,5 +28,6 @@ var index = React.createClass({
     );
   }
 });
+
 
 module.exports = index;

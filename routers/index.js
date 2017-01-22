@@ -6,6 +6,7 @@ import Router from 'koa-router'
 let router = new Router()
 
 router.get('/', function (ctx, next) {
+
   ctx.render('index', {
     title: 'List',
     list: [
