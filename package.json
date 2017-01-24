@@ -12,12 +12,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "escape-html": "^1.0.3",
     "koa": "2",
     "koa-react-view": "^3.0.0",
     "koa-router": "^7.1.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "utf8": "^2.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

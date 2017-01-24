@@ -1,7 +1,7 @@
 import escapeHtml from 'escape-html'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-
+import utf8 from 'utf8'
 import Content from 'resource/components/content'
 import Layout from 'resource/views/layout'
 
@@ -9,7 +9,7 @@ class Index extends React.Component {
   render() {
     // pass data to client side js
     // xss!!!
-    let dataScript = `window.__list__ = '${escapeHtml(JSON.stringify(this.props.list))}';`;
+    let dataScript = `window.__list__ = '${utf8.encode(JSON.stringify(this.props.list))}';`;
     // render as a dynamic react component
     let contentString = ReactDOMServer.renderToString(<Content list={this.props.list}/>);
 
