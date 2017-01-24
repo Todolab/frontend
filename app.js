@@ -43,16 +43,9 @@ app.use(middleware({
     // public path to bind the middleware to
     // use the same as in webpack
 
-    // index: "index.html",
-    // the index path for web server
 
-    // headers: { "X-Custom-Header": "yes" },
-    // custom headers
-
-    stats: {
-      colors: true
-    },
-    // options for formating the statistics
+    stats: "normal",
+    // Standard output
 
     reporter: null,
     // Provide a custom reporter to change the way how logs are shown.
