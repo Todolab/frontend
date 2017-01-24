@@ -1,19 +1,14 @@
-var React = require('react');
+import React from 'react'
 
-var ENTER_KEY_CODE = 13;
+const ENTER_KEY_CODE = 13;
 
-var Create = React.createClass({
-  propTypes: {
-    add: React.PropTypes.func,
-  },
+class Create extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' }
+  }
 
-  getInitialState: function () {
-    return {
-      value: ''
-    };
-  },
-
-  render: function() {
+  render() {
     return (
       <div className="create-box">
         <input
@@ -24,26 +19,30 @@ var Create = React.createClass({
           value={this.state.value}/>
       </div>
     );
-  },
+  }
 
-  _onKeyDown: function (event) {
+  _onKeyDown(event) {
     if (event.keyCode === ENTER_KEY_CODE) this.save();
-  },
+  }
 
-  _onChange: function (event) {
+  _onChange(event) {
     this.state.value = event.target.value;
     this.setState({
       value: event.target.value
     });
-  },
+  }
 
-  save: function () {
+  save() {
     if (!this.state.value) return;
     this.props.add(this.state.value);
     this.setState({
       value: ''
     });
   }
-});
+}
 
-module.exports = Create;
+Create.propTypes = {
+  add: React.PropTypes.func
+}
+
+export default Create;

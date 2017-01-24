@@ -1,20 +1,23 @@
-var React = require('react');
+import React from 'react'
 
-var Item = React.createClass({
+class Item extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  propTypes: {
-    remove: React.PropTypes.func,
-    content: React.PropTypes.string
-  },
-
-  render: function() {
-    return(
-      <li>
-        <span className="item">{this.props.content}</span>
-        <span className="remove" onClick={this.props.remove}>x</span>
-      </li>
+  render() {
+    return (
+        <li>
+          <span className="item">{this.props.content}</span>
+          <span className="remove" onClick={this.props.remove}>x</span>
+        </li>
     );
   }
-});
+}
 
-module.exports = Item;
+Item.propTypes = {
+  remove: React.PropTypes.func,
+  content: React.PropTypes.string
+}
+
+export default Item;

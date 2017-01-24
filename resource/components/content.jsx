@@ -1,19 +1,14 @@
-var Create = require('./create');
-var Item = require('./item');
-var React = require('react');
+import React from 'react'
+import Create from 'resource/components/create'
+import Item from 'resource/components/item'
 
-var Content = React.createClass({
-  propTypes: {
-    list: React.PropTypes.array
-  },
+class Content extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { list: this.props.list }
+  }
 
-  getInitialState: function () {
-    return {
-      list: this.props.list
-    };
-  },
-
-  render: function() {
+  render() {
     return (
       <div>
         <ul>
@@ -24,21 +19,25 @@ var Content = React.createClass({
         <Create add={this.add} />
       </div>
     );
-  },
+  }
 
-  add: function (content) {
+  add(content) {
     this.setState({
       list: this.state.list.concat(content)
     });
-  },
+  }
 
-  remove: function (index) {
-    console.log(index, this.state.list)
+  remove(index) {
     this.state.list.splice(index, 1);
     this.setState({
       list: this.state.list
     });
   }
-});
+}
 
-module.exports = Content;
+
+Content.propTypes = {
+  list: React.PropTypes.array
+}
+
+export default Content;
