@@ -1,12 +1,8 @@
 
-var React = require('react');
+import React from 'react'
 
-var Layout = React.createClass({
-  propTypes: {
-    title: React.PropTypes.string
-  },
-
-  render: function() {
+class Layout extends React.Component {
+  render() {
     return (
       <html>
         <head>
@@ -20,6 +16,10 @@ var Layout = React.createClass({
       </html>
     );
   }
-});
+}
 
-module.exports = Layout;
+Layout.propTypes = {
+  title: React.PropTypes.string
+}
+
+export default Layout;
