@@ -7,7 +7,6 @@ class Layout extends React.Component {
       <html>
         <head>
           <title>{this.props.title}</title>
-          <link rel="stylesheet" href="/bundle.css" />
         </head>
         <body>
           {this.props.children}

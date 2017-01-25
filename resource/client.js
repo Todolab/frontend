@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import utf8 from 'utf8'
 import Content from 'resource/components/content'
-import 'resource/styles/main.css'
 
 function initApp() {
   let container = document.getElementById('content');

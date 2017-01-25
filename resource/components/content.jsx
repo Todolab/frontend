@@ -2,6 +2,13 @@ import React from 'react'
 import Create from 'resource/components/create'
 import Item from 'resource/components/item'
 
+import styled from 'styled-components';
+
+const Ul = styled.ul`
+      padding: 4em;
+      background: papayawhip;
+    `;
+
 class Content extends React.Component {
   constructor(props) {
     super(props);
@@ -11,11 +18,11 @@ class Content extends React.Component {
   render() {
     return (
       <div>
-        <ul>
+        <Ul>
           {this.state.list.map((content, index) => {
             return <Item content={content} key={index} remove={this.remove.bind(this, index)} />;
           })}
-        </ul>
+        </Ul>
         <Create add={this.add} />
       </div>
     );
