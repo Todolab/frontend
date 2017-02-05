@@ -4,7 +4,7 @@
   "description": "Todolab frontend",
   "main": "index.js",
   "scripts": {
-    "develop": "nodemon --harmony-async-await index.js"
+    "develop": "NODE_ENV=development nodemon --harmony-async-await index.js"
   },
   "repository": "Todolab/frontent",
   "keywords": [
@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "koa": "2",
+    "koa": "^2.0.0-alpha.7",
     "koa-react-view": "^3.0.0",
     "koa-router": "^7.1.0",
     "react": "^15.4.2",
@@ -21,8 +21,10 @@
     "utf8": "^2.1.2"
   },
   "devDependencies": {
+    "@webpack-blocks/babel6": "^0.4.0",
+    "@webpack-blocks/extract-text2": "^0.4.0",
+    "@webpack-blocks/webpack2": "^0.4.0",
     "babel-cli": "^6.18.0",
-    "babel-loader": "^6.2.10",
     "babel-plugin-module-resolver": "^2.4.0",
     "babel-preset-env": "^1.1.5",
     "babel-preset-react": "^6.16.0",

@@ -2,15 +2,25 @@
  * Created by stevenjlho on 20/01/2017.
  */
 
-const webpack = require('webpack');
-const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+import webpack from 'webpack'
+import path from 'path'
+import babel from '@webpack-blocks/babel6'
+import extractText from '@webpack-blocks/extract-text2'
+import {
+  addPlugins,
+  customConfig,
+  createConfig,
+  defineConstants,
+  env,
+  entryPoint,
+  setOutput,
+  sourceMaps
+} from '@webpack-blocks/webpack2'
 
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isProd = nodeEnv === 'production';
 
 const staticsPath = path.join(__dirname, 'public');
 const resourcePath = path.join(__dirname, 'resource');
+
 
 const plugins = [
   // new webpack.optimize.CommonsChunkPlugin({
@@ -18,19 +28,44 @@ const plugins = [
   //   minChunks: Infinity,
   //   filename: 'vendor.bundle.js'
   // }),
-  new webpack.DefinePlugin({
-    'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
-  }),
   new webpack.NamedModulesPlugin(),
-  new ExtractTextPlugin("bundle.css")
 ];
 
-if (isProd) {
-  plugins.push(
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
-      }),
+export default createConfig([
+  setOutput(path.resolve(staticsPath, 'bundle.js')),
+  addPlugins(plugins),
+  babel({
+    'presets': [
+      ['env', {
+        'targets': {
+          'browsers': ['last 2 versions', 'safari >= 7']
+        },
+        'modules': false
+      }],
+      'react'
+    ],
+    'plugins': [
+      ['module-resolver', {
+        'root': ['./']
+      }],
+      'transform-regenerator'
+    ]
+  }),
+  defineConstants({
+    'process.env.NODE_ENV': process.env.NODE_ENV
+  }),
+  env('development', [
+    entryPoint(['webpack-hot-middleware/client', path.resolve(resourcePath, 'client.js')]),
+    sourceMaps('eval'),
+    addPlugins([
+      new webpack.HotModuleReplacementPlugin()
+    ])
+  ]),
+  env('production', [
+    entryPoint(path.resolve(resourcePath, 'client.js')),
+    sourceMaps(),
+    extractText('bundle.css'),
+    addPlugins([
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
@@ -47,64 +82,19 @@ if (isProd) {
         output: {
           comments: false
         },
-      })
-  );
-} else {
-  plugins.push(
-      new webpack.HotModuleReplacementPlugin()
-  );
-}
-
-module.exports = {
-  devtool: isProd ? 'source-map' : 'eval',
-  entry: path.resolve(resourcePath, 'client.js'),
-  output: {
-    path: staticsPath,
-    filename: 'bundle.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: "css-loader"
-        })
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              "presets": [
-                ["env", {
-                  "targets": {
-                    "browsers": ["last 2 versions", "safari >= 7"]
-                  },
-                  "modules": false
-                }],
-                "react"
-              ],
-              "plugins": [
-                ["module-resolver", {
-                  "root": ["./"]
-                }],
-                "transform-regenerator"
-              ]
-            }
-          }
-        ],
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx', '.css'],
-    modules: [
-      path.resolve(__dirname, 'node_modules')
-    ]
-  },
-  plugins
-};
+      }),
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+      }),
+    ])
+  ]),
+  customConfig({
+    resolve: {
+      extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx', '.css'],
+      modules: [
+        path.resolve(__dirname, 'node_modules')
+      ]
+    }
+  })
+])

@@ -17,7 +17,7 @@ import router from 'router.js'
 const viewpath = path.join(__dirname, 'resource', 'views');
 const assetspath = path.join(__dirname, 'public');
 
-
+console.log('webpackconfig', webpackConfig)
 app.use(middleware({
   compiler: compiler,
   dev: {
@@ -52,6 +52,9 @@ app.use(middleware({
 
     serverSideRender: false,
     // Turn off the server-side rendering mode. See Server-Side Rendering part for more info.
+  },
+  hot: {
+    heartbeat: 2000
   }
 }))
 
