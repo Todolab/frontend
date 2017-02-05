@@ -55,7 +55,7 @@ export default createConfig([
     'process.env.NODE_ENV': process.env.NODE_ENV
   }),
   env('development', [
-    entryPoint(['webpack-hot-middleware/client', path.resolve(resourcePath, 'client.js')]),
+    entryPoint(['webpack-hot-middleware/client?path=/__what&timeout=5000', path.resolve(resourcePath, 'client.js')]),
     sourceMaps('eval'),
     addPlugins([
       new webpack.HotModuleReplacementPlugin()
