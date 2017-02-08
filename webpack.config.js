@@ -28,6 +28,14 @@ const plugins = [
   //   minChunks: Infinity,
   //   filename: 'vendor.bundle.js'
   // }),
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      // Javascript lint
+      eslint: {
+        configFile: path.resolve(__dirname, '.eslintrc.json'),
+      },
+    }
+  }),
   new webpack.NamedModulesPlugin(),
 ];
 
@@ -95,6 +103,22 @@ export default createConfig([
       modules: [
         path.resolve(__dirname, 'node_modules')
       ]
+    }
+  }),
+  customConfig({
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'eslint-loader'
+            }
+          ],
+        },
+      ],
     }
   })
 ])
