@@ -6,7 +6,7 @@
 import Router from 'koa-router'
 let router = new Router()
 
-import index from 'routers/index'
+import index from 'pages/index'
 
 
 router.use('/', index.routes());

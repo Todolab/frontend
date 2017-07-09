@@ -3,20 +3,6 @@
  */
 
 
-require("babel-register")({
-  "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
-      }
-    }],
-    "react"
-  ],
-  "plugins": [
-    ["module-resolver", {
-      "root": ["./"]
-    }]
-  ]
-});
+require("babel-register");
 
 require('./app.js')
