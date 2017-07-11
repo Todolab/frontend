@@ -8,13 +8,12 @@ import Head from 'next/head'
 
 export default class extends React.Component {
     static async getInitialProps ({ req }) {
-        return req
-            ? { userAgent: req.headers['user-agent'] }
-            : { userAgent: navigator.userAgent }
+        console.log('getInitialProps')
+        return {}
     }
     render () {
         return <div>
-            Hello World Test {this.props.userAgent}
+            Hello World Test
         </div>
     }
 }

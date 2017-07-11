@@ -2,15 +2,10 @@
   "restartable": "rs",
   "ignore": [
     ".git",
-    "node_modules/",
-    ".next"
+    "node_modules/"
   ],
   "verbose": true,
-  "watch": [
-    "pages/"
-  ],
   "env": {
     "NODE_ENV": "development"
-  },
-  "ext": "js json"
+  }
 }

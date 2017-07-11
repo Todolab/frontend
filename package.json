@@ -13,8 +13,10 @@
   "license": "MIT",
   "dependencies": {
     "koa": "^2.3.0",
-    "koa-router": "^7.1.0",
-    "next": "beta",
+    "koa-react-view": "^3.0.0",
+    "koa-router": "^7.2.1",
+    "koa-views": "^6.0.2",
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "styled-components": "^2.1.1",
