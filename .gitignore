@@ -33,4 +33,5 @@ node_modules
 .idea
 
 ### Project ###
-public
+dist/
+.fusebox/
