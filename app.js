@@ -1,6 +1,7 @@
-var Koa = require('koa');
-var views = require('koa-views');
-var Router = require('koa-router');
+const Koa = require('koa');
+const views = require('koa-views');
+const Router = require('koa-router');
+const serve = require('koa-static');
 import path from 'path'
 
 var app = new Koa();
@@ -27,6 +28,8 @@ router.get('/', async (ctx, next) => {
 app
     .use(router.routes())
     .use(router.allowedMethods());
+
+app.use(serve(__dirname + '/dist'));
 
 app.listen(3000);
 
