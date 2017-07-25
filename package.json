@@ -4,7 +4,7 @@
   "description": "Todolab frontend",
   "main": "index.js",
   "scripts": {
-    "develop": "nodemon index.js"
+    "develop": "nodemon -r dotenv/config index.js"
   },
   "repository": "Todolab/frontent",
   "keywords": [
@@ -12,6 +12,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "koa": "^2.3.0",
     "koa-react-view": "^3.0.0",
     "koa-router": "^7.2.1",
@@ -19,7 +20,8 @@
     "koa-views": "^6.0.2",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "typescript": "^2.4.2"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "beta",
