@@ -4,7 +4,7 @@
   "description": "Todolab frontend",
   "main": "index.js",
   "scripts": {
-    "develop": "nodemon -r dotenv/config index.js"
+    "develop": "node -r dotenv/config fuse.js"
   },
   "repository": "Todolab/frontent",
   "keywords": [
