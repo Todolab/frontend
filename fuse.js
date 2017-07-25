@@ -36,7 +36,7 @@ fuse.dev({
   port: process.env.PORT
 });
 
-
 app.watch().hmr()
 
+// detect file changes on a mounted volume
 fuse.run({chokidar : {usePolling: true} })
