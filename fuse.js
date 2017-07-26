@@ -20,7 +20,7 @@ fuse = FuseBox.init({
     SVGPlugin(), CSSPlugin(), BabelPlugin(),
     WebIndexPlugin({
       title: "Todolab",
-      template: path.resolve(__dirname, 'views', 'index.html')
+      template: path.resolve(__dirname, 'src', 'index.html')
     })
   ]
 });
