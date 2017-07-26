@@ -1,26 +1,41 @@
 import * as React from "react";
-import { Component } from 'react';
+import {Component} from 'react';
 import './App.css';
-import logo from './logo.svg';
-
-//import { Provider } from 'react-redux';
+import Item from './item'
 
 class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React Todo!</h2>
-                </div>
-                <p className="App-intro">
-                    To get started, edit
-                    <code>src/App.js</code>
-                    and save to reload.
-                </p>
-            </div>
-        );
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: []
+    };
+
+    this.handleEnterPress = this.handleEnterPress.bind(this);
+  }
+
+  handleEnterPress(e) {
+
+    if (e.key === 'Enter') {
+      const item = {
+        name: e.target.value
+      }
+
+      this.state.items.push(item)
+
+      this.setState({items: this.state.items});
     }
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <input type="text" placeholder="请输入待办事项" onKeyPress={this.handleEnterPress}/>
+        </div>
+        <Item items={this.state.items}/>
+      </div>
+    );
+  }
 }
 
 export default App;
