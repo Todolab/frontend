@@ -1,9 +1,9 @@
 const {
-    FuseBox,
-    SVGPlugin,
-    CSSPlugin,
-    BabelPlugin,
-    WebIndexPlugin,
+  FuseBox,
+  SVGPlugin,
+  CSSPlugin,
+  BabelPlugin,
+  WebIndexPlugin,
 } = require("fuse-box");
 
 const path = require('path')
@@ -15,7 +15,7 @@ let fuse, app, vendor, isProduction;
 fuse = FuseBox.init({
   homeDir: "src",
   output: "dist/$name.js",
-  sourceMaps: true,
+  sourceMaps: {project: true, vendor: true},
   plugins: [
     SVGPlugin(), CSSPlugin(), BabelPlugin(),
     WebIndexPlugin({
@@ -39,4 +39,4 @@ fuse.dev({
 app.watch().hmr()
 
 // detect file changes on a mounted volume
-fuse.run({chokidar : {usePolling: true} })
+fuse.run({chokidar: {usePolling: true}})
