@@ -24,6 +24,8 @@ class App extends Component {
       this.setState({
         items: this.state.items
       });
+
+      e.target.value = '';
     }
   }
 
