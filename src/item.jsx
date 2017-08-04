@@ -5,13 +5,17 @@ class Item extends React.Component {
     super(props);
   }
 
+  handleDeleteItem(id) {
+    this.props.delete(id)
+  }
+
   render() {
     const items = this.props.items;
     let listItems = '';
     if (items) {
       listItems = items.map((item) =>
         <li key={item.name.toString()}>
-          {item.name}
+          {item.name} <button onClick={this.handleDeleteItem.bind(this, item.name)}>x</button>
         </li>
       );
     }
