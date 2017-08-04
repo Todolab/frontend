@@ -17,15 +17,12 @@ class App extends Component {
   handleEnterPress(e) {
     if (e.key === 'Enter') {
       const item = {
-        name: e.target.value,
-        id: index
+        name: e.target.value
       };
 
       this.state.items.push(item);
-      let index = this.state.index + 1
       this.setState({
-        items: this.state.items,
-        index: index
+        items: this.state.items
       });
     }
   }
