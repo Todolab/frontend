@@ -24,10 +24,9 @@
     "typescript": "^2.4.2"
   },
   "devDependencies": {
-    "babel-plugin-module-resolver": "beta",
-    "babel-preset-env": "^2.0.0-alpha.12",
-    "babel-preset-react": "^7.0.0-alpha.12",
-    "babel-register": "^7.0.0-alpha.12",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
     "eslint": "^4.0.0",
     "eslint-plugin-react": "^7.1.0",
     "fuse-box": "^2.2.0",
