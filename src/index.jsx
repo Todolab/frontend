@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import './index.css';
+import {Provider} from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import TodoApp from './TodoApp';
+
+import store from './Store.js';
+
+
+ReactDOM.render(
+  <Provider store={store}>
+    <TodoApp/>
+  </Provider>,
+  document.getElementById('root')
+)
