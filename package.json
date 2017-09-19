@@ -25,11 +25,14 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "eslint": "^4.0.0",
     "eslint-plugin-react": "^7.1.0",
-    "fuse-box": "^2.2.0"
+    "fuse-box": "^2.2.0",
+    "typescript": "^2.5.2"
   }
 }

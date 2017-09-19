@@ -14,5 +14,6 @@
       }
     ],
     "react"
-  ]
+  ],
+  "plugins": ["transform-object-rest-spread"]
 }
