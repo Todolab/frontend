@@ -1,30 +1,38 @@
-import React from 'react';
+import React, {Component} from 'react'
 import {connect} from 'react-redux';
 
 import TodoItem from './todoItem.js';
 import {toggleTodo, removeTodo} from '../actions.js';
 import {FilterTypes} from '../../constants.js';
 
-const TodoList = ({todos, onToggleTodo, onRemoveTodo}) => {
-  return (
-    <ul className="todo-list">
-      {
-        todos.map((item) => (
-          <TodoItem
-            key={item.id}
-            text={item.text}
-            completed={item.completed}
-            onToggle={ () => onToggleTodo(item.id)}
-            onRemove={ () => onRemoveTodo(item.id)}
-          />
-        ))
-      }
-    </ul>
-  )
+
+class TodoList extends Component {
+  constructor(props, context) {
+    super(props, context)
+
+  }
+
+  render() {
+    return (
+      <ul className="todo-list">
+        {
+          this.props.todos.map((item) => (
+            <TodoItem
+              key={item.id}
+              text={item.text}
+              completed={item.completed}
+              onToggle={() => this.props.onToggleTodo(item.id)}
+              onRemove={() => this.props.onRemoveTodo(item.id)}
+            />
+          ))
+        }
+      </ul>
+    )
+  }
 }
 
 const selectVisibleTodos = (todos, filter) => {
-  switch(filter) {
+  switch (filter) {
     case FilterTypes.ALL:
       return todos
     case FilterTypes.COMPLETED:
