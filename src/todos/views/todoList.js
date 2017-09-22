@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import TodoItem from './todoItem.js';
 import {toggleTodo, removeTodo} from '../actions.js';
 import {FilterTypes} from '../../constants.js';
+import {fetchTodo} from "../actions";
 
 
 class TodoList extends Component {
@@ -11,6 +12,11 @@ class TodoList extends Component {
     super(props, context)
 
   }
+
+  componentDidMount() {
+    this.props.onFetchTodo();
+  }
+
 
   render() {
     return (
@@ -48,10 +54,18 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = {
-  onToggleTodo: toggleTodo,
-  onRemoveTodo: removeTodo
-}
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onToggleTodo: (id) => {
+      dispatch(toggleTodo(id));
+    },
+    onRemoveTodo: (id) => {
+      dispatch(removeTodo(id));
+    },
+    onFetchTodo: () => {
+      dispatch(fetchTodo())
+    }
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

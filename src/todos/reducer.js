@@ -1,4 +1,4 @@
-import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO} from './actionTypes'
+import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SUCCESS_TODO} from './actionTypes'
 
 export default (state = [], action) => {
   switch(action.type) {
@@ -11,6 +11,9 @@ export default (state = [], action) => {
         },
         ...state
       ]
+    }
+    case SUCCESS_TODO: {
+      return action.result
     }
     case TOGGLE_TODO: {
       return state.map((todoItem) => {
