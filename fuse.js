@@ -17,6 +17,7 @@ Sparky.task("config", () => {
         sourceMaps: true,
         hash: isProduction,
         output: "dist/$name.js",
+        target : "browser",
         plugins: [
             SVGPlugin(), CSSPlugin(), BabelPlugin(),
             WebIndexPlugin({
@@ -41,7 +42,7 @@ Sparky.task("default", ["clean", "config"], () => {
       port: process.env.PORT
     });
     // add dev instructions
-    app.watch().hmr()
+    app.watch().hmr({reload: true})
 
     return fuse.run({chokidar: {usePolling: true}})
 });
