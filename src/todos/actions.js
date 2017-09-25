@@ -1,4 +1,4 @@
-import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO, GET_TODO, LOAD_TODO, FAIL_TODO, SUCCESS_TODO} from './actionTypes'
+import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO, LOAD_TODO, FAIL_TODO, GET_TODO_SUCCESS} from './actionTypes'
 
 let nextTodoId = 0
 
@@ -25,8 +25,8 @@ export const fetchTodoStarted = () => ({
   type: LOAD_TODO
 });
 
-export const fetchTodoSuccess = (result) => ({
-  type: SUCCESS_TODO,
+export const getTodoSuccess = (result) => ({
+  type: GET_TODO_SUCCESS,
   result
 })
 
@@ -54,7 +54,7 @@ export const fetchTodo = () => {
         throw new Error('Fail to get response with status ' + response.status);
       }
       response.json().then((responseJson) => {
-        dispatchIfValid(fetchTodoSuccess(responseJson));
+        dispatchIfValid(getTodoSuccess(responseJson));
       }).catch((error) => {
         dispatchIfValid(fetchTodoFailure(error));
       });
