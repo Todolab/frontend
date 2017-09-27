@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import TodoItem from './todoItem.js';
 import {toggleTodo, removeTodo} from '../actions.js';
 import {FilterTypes} from '../../constants.js';
-import {fetchTodo} from "../actions";
+import {getTodo} from "../actions";
 
 
 class TodoList extends Component {
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(removeTodo(id));
     },
     onFetchTodo: () => {
-      dispatch(fetchTodo())
+      dispatch(getTodo())
     }
   };
 };

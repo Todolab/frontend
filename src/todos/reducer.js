@@ -1,19 +1,15 @@
-import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO, GET_TODO_SUCCESS} from './actionTypes'
+import {TOGGLE_TODO, REMOVE_TODO, GET_TODO_SUCCESS, ADD_TODO_SUCCESS} from './actionTypes'
 
 export default (state = [], action) => {
   switch(action.type) {
-    case ADD_TODO: {
-      return [
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        },
-        ...state
-      ]
-    }
     case GET_TODO_SUCCESS: {
       return action.result
+    }
+    case ADD_TODO_SUCCESS: {
+      return [
+        action.result,
+        ...state
+      ]
     }
     case TOGGLE_TODO: {
       return state.map((todoItem) => {
