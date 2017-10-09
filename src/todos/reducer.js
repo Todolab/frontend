@@ -6,6 +6,7 @@ export default (state = [], action) => {
       return action.result
     }
     case ADD_TODO_SUCCESS: {
+      console.log([action.result, ...state])
       return [
         action.result,
         ...state

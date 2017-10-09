@@ -2,6 +2,7 @@ import Koa from 'koa'
 import views from 'koa-views'
 import Router from 'koa-router'
 import serve from 'koa-static'
+import bodyParser from 'koa-bodyparser'
 import path from 'path'
 import axios from 'axios'
 
@@ -13,6 +14,7 @@ const viewpath = path.join(__dirname, 'dist');
 
 // Must be used before any router is used
 app.use(views(viewpath));
+app.use(bodyParser());
 
 
 router.get('/', async (ctx, next) => {
@@ -20,7 +22,13 @@ router.get('/', async (ctx, next) => {
 });
 
 router.get('/todo', async (ctx, next) => {
-    ctx.data = await axios.get('local.backend.todolab.io/todo')
+    const data = await axios.get('http://local.backend.todolab.io/todo')
+    ctx.body =  data.data
+});
+
+router.post('/todo', async (ctx, next) => {
+    const data = await axios.post('http://local.backend.todolab.io/todo', ctx.request.body)
+    ctx.body =  data.data
 });
 
 

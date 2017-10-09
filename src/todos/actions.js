@@ -1,4 +1,5 @@
 import 'whatwg-fetch'
+import axios from 'axios'
 import {
   TOGGLE_TODO,
   REMOVE_TODO,
@@ -9,14 +10,6 @@ import {
   ADD_TODO_FAIL
 } from './actionTypes'
 
-// let nextTodoId = 0
-//
-// export const addTodo = (text) => ({
-//   type: ADD_TODO,
-//   completed: false,
-//   id: nextTodoId++,
-//   text: text
-// })
 
 export const toggleTodo = (id) => ({
   type: TOGGLE_TODO,
@@ -46,7 +39,7 @@ export const getTodoFailure = (error) => ({
 
 export const getTodo = () => {
   return (dispatch) => {
-    const apiUrl = 'http://local.backend.todolab.io/todo'
+    const apiUrl = 'http://local.todolab.io/todo'
 
     const seqId = ++nextSeqId;
 
@@ -86,7 +79,7 @@ export const addTodoFailure = (error) => ({
 
 export const addTodo = (text) => {
   return (dispatch) => {
-    const apiUrl = 'http://local.backend.todolab.io/todo'
+    const apiUrl = 'http://local.todolab.io/todo'
 
     const seqId = ++nextSeqId;
 
@@ -96,27 +89,15 @@ export const addTodo = (text) => {
       }
     }
 
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        text: text
+    axios.post(apiUrl, {
+      text: text,
+    })
+      .then(function (response) {
+        dispatchIfValid(addTodoSuccess(response.data));
       })
-    }).then((response) => {
-      if (response.status !== 200) {
-        throw new Error('Fail to get response with status ' + response.status);
-      }
-      response.json().then((responseJson) => {
-        console.log('responseJson', responseJson)
-        dispatchIfValid(addTodoSuccess(responseJson));
-      }).catch((error) => {
+      .catch(function (error) {
         dispatchIfValid(addTodoFailure(error));
       });
-    }).catch((error) => {
-      dispatchIfValid(addTodoFailure(error));
-    })
   };
 }
 

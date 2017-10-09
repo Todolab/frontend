@@ -16,6 +16,7 @@
     "babel-polyfill": "^6.26.0",
     "dotenv": "^4.0.0",
     "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-react-view": "^3.0.0",
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
