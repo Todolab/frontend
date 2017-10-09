@@ -12,6 +12,8 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.16.2",
+    "babel-polyfill": "^6.26.0",
     "dotenv": "^4.0.0",
     "koa": "^2.3.0",
     "koa-react-view": "^3.0.0",
