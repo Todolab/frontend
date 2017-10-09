@@ -1,0 +1,10 @@
+apps:
+  - script : ./index.js
+    name   : 'frontend'
+    watch  : true
+    ignore_watch:
+      - node_modules
+    watch_options:
+      usePolling: true
+    env_production:
+      NODE_ENV: development
