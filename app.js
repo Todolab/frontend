@@ -1,8 +1,9 @@
-const Koa = require('koa');
-const views = require('koa-views');
-const Router = require('koa-router');
-const serve = require('koa-static');
+import Koa from 'koa'
+import views from 'koa-views'
+import Router from 'koa-router'
+import serve from 'koa-static'
 import path from 'path'
+import axios from 'axios'
 
 const app = new Koa();
 
@@ -15,9 +16,13 @@ app.use(views(viewpath));
 
 
 router.get('/', async (ctx, next) => {
-    
     await ctx.render('index')
 });
+
+router.get('/todo', async (ctx, next) => {
+    ctx.data = await axios.get('local.backend.todolab.io/todo')
+});
+
 
 app
     .use(router.routes())
