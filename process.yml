@@ -4,6 +4,7 @@ apps:
     watch  : true
     ignore_watch:
       - node_modules
+      - .fusebox
     watch_options:
       usePolling: true
     env_production:
